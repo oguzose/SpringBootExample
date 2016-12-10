@@ -1,6 +1,17 @@
 package com.example;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class HotelBooking {
+	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private long id;
 	
 	private String hotelName;
 	private double pricePerNight;
@@ -9,7 +20,6 @@ public class HotelBooking {
 	
 	public HotelBooking() {
 		
-		// TODO Auto-generated constructor stub
 	}
 
 	public HotelBooking(String hotelName, double pricePerNight, int nbOfNights) {
