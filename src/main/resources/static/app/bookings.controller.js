@@ -1,53 +1,49 @@
 (function() {
-	'use strict';
-	
-	angular
-		.module('app')
-		.controller('BookingsController', BookingsController);
-	
-	BookingsController.$inject = ['$http'];
+    'use strict';
 
-	function BookingsController($http) {
+    angular
+        .module('app')
+        .controller('BookingsController', BookingsController);
 
-		var vm = this;
+    BookingsController.$inject = ['$http'];
 
-		vm.bookings = [];
+    function BookingsController($http) {
 
-		init();
+        var vm = this;
+        vm.bookings = [];
+        vm.getAll = getAll;
+        vm.getAffordable = getAffordable;
+        vm.deleteBooking = deleteBooking;
 
-		function init() {
-			getAll();
-		}
-		
-		function getAll() {
-			var url = '/bookings/all';
-			var bookingsPromise = $http.get(url);
-			bookingsPromise.then(function (response) {
+        init();
 
-				vm.bookings = response.data;
-			});
-		}
+        function init() {
+            getAll();
+        }
 
-		function getAffordable() {
+        function getAll() {
+            var url = '/bookings/hotel';
+            var bookingsPromise = $http.get(url);
+            bookingsPromise.then(function(response) {
+                vm.bookings = response.data;
+            });
+        }
 
-			var url = '/bookings/affordable/'+100;
-			var bookingsPromise = $http.get(url);
-			bookingsPromise.then(function (response) {
-				vm.bookings = response.data;
-			});
-		}
-		
-		function deleteBooking(id) {
+        function getAffordable() {
+            var url = '/bookings/affordable/' + 100;
+            var bookingsPromise = $http.get(url);
+            bookingsPromise.then(function(response) {
+                vm.bookings = response.data;
+            });
+        }
 
-			var url = '/bookings/affordable/'+id;
-			$http.post(url).then(function (response) {
-				vm.bookings	= response.data;
+        function deleteBooking(id) {
+            var url = '/bookings/hotel/' + id;
+            $http.delete(url).then(function(response) {
+                vm.bookings = response.data;
+            });
+        }
 
-			});
-		}
+    }
 
-
-	}
-	
-	
 })();

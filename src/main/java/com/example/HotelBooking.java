@@ -19,7 +19,7 @@ public class HotelBooking {
 	
 	
 	public HotelBooking() {
-		
+		super();
 	}
 
 	public HotelBooking(String hotelName, double pricePerNight, int nbOfNights) {
@@ -45,6 +45,14 @@ public class HotelBooking {
 	}
 	public void setNbOfNights(int nbOfNights) {
 		this.nbOfNights = nbOfNights;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }
