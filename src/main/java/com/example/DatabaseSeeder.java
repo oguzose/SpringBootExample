@@ -25,14 +25,11 @@ public class DatabaseSeeder implements CommandLineRunner {
 
 		List<HotelBooking>	bookings = new ArrayList<>();
 		
-		bookings.add(new HotelBooking("rahathotel", 100.50, 3));
-		bookings.add(new HotelBooking("otelim", 200.50, 6));
-		bookings.add(new HotelBooking("ot2", 10.50, 8));
+		bookings.add(new HotelBooking("MyHotel", 100.50, 3));
+		bookings.add(new HotelBooking("LuxHotel", 20, 6));
 		
 		bookingRepository.save(bookings);	
 		
 	}
-
-	
 	
 }

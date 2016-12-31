@@ -64,10 +64,35 @@
 							<td>
 								<button class="btn btn-danger"
 									ng-click="vm.deleteBooking(booking.id)">Delete</button>
+								<button class="btn btn-info" ng-click="vm.updateHotel(booking)">Düzenle</button>
+									
 							</td>
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class="col-sm-8 col-sm-offset-2">
+				<form>
+					<div class="form-group">
+						<label for="name">Name:</label>
+						<input type="text" class="form-control" ng-model="vm.hotelInfo.hotelName" id="name"/>
+					</div>
+					<div class="form-group">
+						<label for="night">Night:</label>
+						<input class="form-control" ng-model="vm.hotelInfo.nbOfNights" id="night"/>
+					</div>
+					<div class="form-group">
+						<label for="nightPriceRate"> Price / Night:</label>
+						<input class="form-control" ng-model="vm.hotelInfo.pricePerNight" id="nightPriceRate"/>
+					</div>					
+					<button ng-show="vm.hotelInfo.id == -1" class="btn btn-success" 
+						ng-click="vm.save(vm.hotelInfo)">Kaydet
+					</button>
+					<button ng-show="vm.hotelInfo.id !== -1" class="btn btn-info"
+						 ng-click="vm.update(vm.hotelInfo)">Güncelle
+					 </button>
+					
+				</form>
 			</div>
 		</div>
 	</div>

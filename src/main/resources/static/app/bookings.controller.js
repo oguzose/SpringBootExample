@@ -14,6 +14,16 @@
         vm.getAll = getAll;
         vm.getAffordable = getAffordable;
         vm.deleteBooking = deleteBooking;
+        vm.save = save;
+        vm.updateHotel = updateHotel;
+        vm.update = update;
+        
+        vm.hotelInfo = {
+        		"id":-1,
+        		"hotelName" : "",
+    			"pricePerNight":0,
+    			"nbOfNights":0
+        }
 
         init();
 
@@ -43,6 +53,36 @@
                 vm.bookings = response.data;
             });
         }
+        
+        function save(data) {
+            var url = '/bookings/hotel/';
+            $http.post(url , data).then(function(response) {
+                vm.bookings = response.data;
+            });
+        }
+        
+        function update(data) {
+            var url = '/bookings/hotel/';
+            $http.put(url , data).then(function(response) {
+                vm.bookings = response.data;
+                clearForm();
+            });
+        }
+        
+        function updateHotel(data) {
+        	vm.hotelInfo = angular.copy(data);
+        }
+        
+        function clearForm() {
+        	vm.hotelInfo = {
+                	id: -1,
+                	hotelName: "",
+                	pricePerNight: 0,
+                	nbOfNights: 0
+            }
+        }
+        
+        
 
     }
 
